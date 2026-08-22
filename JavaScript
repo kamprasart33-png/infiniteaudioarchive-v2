@@ -1,0 +1,12 @@
+const express = require('express');
+const app = express();
+
+// Add the root route here:
+app.get('/', (req, res) => {
+  res.send('Infinite Audio Archive API is running');
+});
+
+// Keep this at the bottom:
+app.listen(3002, () => {
+  console.log('Server running on port 3002');
+});
