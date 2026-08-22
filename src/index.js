@@ -18,6 +18,24 @@ let aiCEO;
 app.get('/health', (req, res) => {
   res.json({ status: 'healthy', message: 'Infinite Audio Archive v2 is running' });
 });
+import express from 'express';
+const app = express();
+
+app.use(express.json());
+
+// Homepage route
+app.get('/', (req, res) => {
+  res.send('Infinite Audio Archive API is running');
+});
+
+// Example API route
+app.get('/api/audio', (req, res) => {
+  res.json({ message: 'Audio endpoint working' });
+});
+
+app.listen(3002, () => {
+  console.log('🚀 Infinite Audio Archive API on port 3002');
+});
 
 app.get('/api/status', (req, res) => {
   if (!aiCEO) {
