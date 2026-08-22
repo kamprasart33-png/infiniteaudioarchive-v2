@@ -84,5 +84,6 @@ process.on('SIGINT', () => {
 });
 
 initialize();
+nano server.js
 
 module.exports = app;
