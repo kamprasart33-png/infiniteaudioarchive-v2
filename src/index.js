@@ -87,3 +87,7 @@ initialize();
 nano server.js
 
 module.exports = app;
+app.get('/', (req, res) => {
+  res.send('Infinite Audio Archive API is running');
+});
+
