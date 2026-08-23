@@ -1,3 +1,76 @@
+const openapiSpec = {
+  openapi: "3.0.3",
+  info: {
+    title: "Infinite Audio Archive API",
+    version: "2.0.0",
+    description: "API for uploading, storing, indexing, and retrieving audio files."
+  },
+  servers: [
+    {
+      url: "http://localhost:3002",
+      description: "Local development server"
+    }
+  ],
+  paths: {
+    "/": {
+      get: {
+        summary: "API homepage",
+        responses: {
+          "200": {
+            description: "JSON homepage status"
+          }
+        }
+      }
+    },
+    "/status": {
+      get: {
+        summary: "API status dashboard",
+        responses: {
+          "200": {
+            description: "System health, uptime, memory, and environment info"
+          }
+        }
+      }
+    },
+    "/api/audio": {
+      get: {
+        summary: "List audio files",
+        responses: {
+          "200": {
+            description: "Returns all audio metadata"
+          }
+        }
+      }
+    },
+    "/api/upload": {
+      post: {
+        summary: "Upload an audio file",
+        requestBody: {
+          required: true,
+          content: {
+            "multipart/form-data": {
+              schema: {
+                type: "object",
+                properties: {
+                  file: {
+                    type: "string",
+                    format: "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Upload success"
+          }
+        }
+      }
+    }
+  }
+};
+
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
