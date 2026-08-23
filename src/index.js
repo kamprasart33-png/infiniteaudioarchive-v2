@@ -22,6 +22,17 @@ import express from 'express';
 const app = express();
 
 app.use(express.json());
+app.use(express.json());
+
+// JSON homepage
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Infinite Audio Archive API',
+    message: 'API is running',
+    timestamp: new Date().toISOString()
+  });
+});
 
 // Homepage route
 app.get('/', (req, res) => {
