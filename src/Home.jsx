@@ -16,3 +16,11 @@ app.get('/', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Infinite Audio Archive API',
+    message: 'API is running',
+    timestamp: new Date().toISOString()
+  });
+});
