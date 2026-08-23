@@ -120,3 +120,32 @@ app.get('/', (req, res) => {
   res.send('Infinite Audio Archive API is running');
 });
 
+app.get('/status', (req, res) => {
+  const uptime = process.uptime();
+  const memory = process.memoryUsage();
+
+  res.json({
+    status: 'ok',
+    service: 'Infinite Audio Archive API',
+    version: 'v2.0.0',
+    timestamp: new Date().toISOString(),
+    uptime_seconds: uptime,
+    memory: {
+      rss: memory.rss,
+      heapTotal: memory.heapTotal,
+      heapUsed: memory.heapUsed,
+      external: memory.external
+    },
+    endpoints: {
+      homepage: '/',
+      status: '/status',
+      audio: '/api/audio',
+      upload: '/api/upload'
+    },
+    environment: {
+      node: process.version,
+      platform: process.platform,
+      pid: process.pid
+    }
+  });
+});
