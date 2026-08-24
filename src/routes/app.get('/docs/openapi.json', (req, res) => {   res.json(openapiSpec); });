@@ -1,2 +1,65 @@
-http://localhost:3002/docs/openapi.json
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+const express = require('express');
+const swaggerUi = require('swagger-ui-express'); // Step 1: Import Swagger
+const app = express();
+
+app.use(express.json());
+
+// ==========================================
+// 2. ADD YOUR OPENAPI SPEC (ABOVE YOUR ROUTES)
+// ==========================================
+const openapiSpec = {
+  openapi: '3.0.3',
+  info: {
+    title: 'Infinite Audio Archive API',
+    version: '2.0.0',
+    description: 'API documentation for Infinite Audio Archive'
+  },
+  paths: {
+    '/': {
+      get: {
+        summary: 'Homepage / Status check',
+        responses: {
+          '200': {
+            description: 'Returns API operational status string'
+          }
+        }
+      }
+    }
+  }
+};
+
+// Serve the interactive documentation route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+
+const openapiSpec = {
+  openapi: "3.0.3",
+  info: {
+    title: "Infinite Audio Archive API",
+    version: "2.0.0",
+    description: "API documentation"
+  },
+  paths: {
+    "/": {
+      get: {
+        summary: "Homepage",
+        responses: {
+          "200": { description: "OK" }
+        }
+      }
+    }
+  }
+};
+
+app.get('/', (req, res) => {
+  res.send('Infinite Audio Archive API is running');
+});
+
+// Error handling middleware...
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({ error: err.message });
+});
+
+app.listen(3002, () => {
+  console.log('Server running on port 3002');
+  console.log('Docs available at http://localhost:3002/api-docs');
+});
