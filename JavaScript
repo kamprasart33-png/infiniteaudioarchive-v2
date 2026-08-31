@@ -25,6 +25,11 @@ async function deleteAudio(filename) {
 
   alert("Deleted: " + filename);
   loadAudioList(); // refresh list
+const addBtn = document.createElement("button");
+addBtn.textContent = "Add to Playlist";
+addBtn.onclick = () => addToPlaylist(file.name);
+item.appendChild(addBtn);
+
 }
 function createPlaylist() {
   const name = document.getElementById("playlistNameInput").value.trim();
