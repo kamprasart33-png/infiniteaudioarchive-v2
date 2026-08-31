@@ -1,3 +1,5 @@
+let playlists = JSON.parse(localStorage.getItem("playlists") || "{}");
+
 const express = require('express');
 const app = express();
 
