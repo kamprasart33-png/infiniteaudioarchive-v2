@@ -5,3 +5,16 @@
   oninput="filterAudioList()"
   style="padding: 8px; width: 200px; margin-bottom: 10px;"
 >
+<div style="margin-bottom: 10px;">
+  <input 
+    type="text" 
+    id="playlistNameInput" 
+    placeholder="New playlist name..."
+    style="padding: 6px; width: 180px;"
+  >
+  <button onclick="createPlaylist()">Create Playlist</button>
+
+  <select id="playlistSelect" onchange="loadPlaylist()" style="margin-left: 10px;">
+    <option value="all">All Audio</option>
+  </select>
+</div>
