@@ -36,4 +36,15 @@ function createPlaylist() {
   updatePlaylistDropdown();
   alert("Playlist created: " + name);
 }
+function updatePlaylistDropdown() {
+  const select = document.getElementById("playlistSelect");
+  select.innerHTML = '<option value="all">All Audio</option>';
+
+  Object.keys(playlists).forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    select.appendChild(option);
+  });
+}
 
