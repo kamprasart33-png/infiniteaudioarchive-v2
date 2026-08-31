@@ -10,3 +10,17 @@ app.get('/', (req, res) => {
 app.listen(3002, () => {
   console.log('Server running on port 3002');
 });
+async function deleteAudio(filename) {
+  const { data, error } = await supabase.storage
+    .from("audio")
+    .remove([filename]);
+
+  if (error) {
+    console.error("Delete error:", error);
+    alert("Failed to delete file.");
+    return;
+  }
+
+  alert("Deleted: " + filename);
+  loadAudioList(); // refresh list
+}
