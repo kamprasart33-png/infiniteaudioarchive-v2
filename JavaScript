@@ -25,6 +25,37 @@ async function deleteAudio(filename) {
 
   alert("Deleted: " + filename);
   loadAudioList(); // refresh list
+function loadPlaylist() {
+  const playlist = document.getElementById("playlistSelect").value;
+
+  if (playlist === "all") {
+    loadAudioList(); // your original function
+    return;
+  }
+
+  const audioList = document.getElementById("audioList");
+  audioList.innerHTML = "";
+
+  const items = playlists[playlist];
+
+  items.forEach(name => {
+    const item = document.createElement("div");
+    item.textContent = name;
+
+    // Delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.onclick = () => deleteAudio(name);
+    item.appendChild(deleteBtn);
+
+    audioList.appendChild(item);
+  });
+}
+
+const addBtn = document.createElement("button");
+addBtn.textContent = "Add to Playlist";
+addBtn.onclick = () => addToPlaylist(file.name);
+item.appendChild(addBtn);
 const addBtn = document.createElement("button");
 addBtn.textContent = "Add to Playlist";
 addBtn.onclick = () => addToPlaylist(file.name);
