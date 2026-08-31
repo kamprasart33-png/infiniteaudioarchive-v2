@@ -26,3 +26,14 @@ async function deleteAudio(filename) {
   alert("Deleted: " + filename);
   loadAudioList(); // refresh list
 }
+function createPlaylist() {
+  const name = document.getElementById("playlistNameInput").value.trim();
+  if (!name) return alert("Enter a playlist name.");
+
+  if (!playlists[name]) playlists[name] = [];
+
+  localStorage.setItem("playlists", JSON.stringify(playlists));
+  updatePlaylistDropdown();
+  alert("Playlist created: " + name);
+}
+
