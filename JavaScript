@@ -65,6 +65,27 @@ item.appendChild(addBtn);
 function createPlaylist() {
   const name = document.getElementById("playlistNameInput").value.trim();
   if (!name) return alert("Enter a playlist name.");
+async function loadPlaylists() {
+  const { data, error } = await supabase
+    .from("playlists")
+    .select("*");
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const select = document.getElementById("playlistSelect");
+  select.innerHTML = '<option value="all">All Audio</option>';
+
+  data.forEach(pl => {
+    const option = document.createElement("option");
+    option.value = pl.id;
+    option.textContent = pl.name;
+    select.appendChild(option);
+  });
+}
+
 
   if (!playlists[name]) playlists[name] = [];
 
