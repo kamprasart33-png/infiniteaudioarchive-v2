@@ -32,6 +32,26 @@ function loadPlaylist() {
     loadAudioList(); // your original function
     return;
   }
+async function addToPlaylist(filename) {
+  const playlistId = document.getElementById("playlistSelect").value;
+
+  if (playlistId === "all") {
+    alert("Select a playlist first.");
+    return;
+  }
+
+  const { data, error } = await supabase
+    .from("playlist_items")
+    .insert([{ playlist_id: playlistId, filename }]);
+
+  if (error) {
+    console.error(error);
+    alert("Failed to add to playlist.");
+    return;
+  }
+
+  alert("Added to playlist!");
+}
 
   const audioList = document.getElementById("audioList");
   audioList.innerHTML = "";
@@ -104,4 +124,5 @@ function updatePlaylistDropdown() {
     select.appendChild(option);
   });
 }
+loadPlaylists();
 
