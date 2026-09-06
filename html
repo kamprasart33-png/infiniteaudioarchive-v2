@@ -321,9 +321,10 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
     // TODO: replace with your real values or environment injection
-    const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-    const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const SUPABASE_URL = "https://abcd1234.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
     const audioListEl = document.getElementById("audioList");
     const waveCanvas = document.getElementById("waveCanvas");
