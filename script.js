@@ -3,10 +3,10 @@
 // -------------------------------
 
 // Replace these with your real values
-const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
-
+const SUPABASE_URL = "https://abcd1234.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
 // -------------------------------
 // DOM Elements
