@@ -160,12 +160,20 @@ async function createPlaylistFromInput() {
 }
 
 async function createPlaylist(name) {
-  // Cloud playlist wiring goes here (Supabase table)
-  const option = document.createElement("option");
-  option.value = "local-" + name;
-  option.textContent = name;
-  playlistSelect.appendChild(option);
+  const { data, error } = await supabase
+    .from("playlists")
+    .insert([{ name }]);
+
+  if (error) {
+    console.error(error);
+    alert("Failed to create playlist.");
+    return;
+  }
+
   alert("Playlist created: " + name);
+  loadPlaylists();
+}
+
 }
 
 async function addToPlaylist(filename) {
