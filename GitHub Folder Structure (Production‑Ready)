@@ -1,0 +1,19 @@
+infinite-audio-archive/
+│
+├── index.html              # Main app UI (premium version)
+├── style.css               # Optional: move styles out of HTML
+├── script.js               # Optional: move JS out of HTML
+│
+├── /assets/                # Images, icons, logos
+│   ├── logo.png
+│   └── cover-default.jpg
+│
+├── /audio/                 # (Optional) local dev audio files
+│
+├── /docs/                  # Documentation, notes, future API specs
+│   └── README.md
+│
+├── /config/                # Deployment configs
+│   └── vercel.json         # Optional Vercel config
+│
+└── .gitignore              # Ignore temp files
